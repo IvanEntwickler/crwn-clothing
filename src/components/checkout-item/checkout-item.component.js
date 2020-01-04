@@ -19,9 +19,9 @@ const CheckoutItem = ({cartItem, removeItem, addItem, decreaseItem}) => {
         <span className='name'>{name}</span>
 
         <span className='quantity'>
-        <div onClick={()=> decreaseItem(cartItem)} className='arrow'>&#10094;</div>
-        <span className='value'>{quantity}</span>
-        <div onClick={()=> addItem(cartItem)} className='arrow'>&#10095;</div>
+            <div onClick={()=> decreaseItem(cartItem)} className='arrow'>&#10094;</div>
+                <input className='value' type="quantity" onChange={()=> quantity}/>
+            <div onClick={()=> addItem(cartItem)} className='arrow'>&#10095;</div>
         </span>
 
         <span className='price'>{price}</span>
@@ -30,10 +30,11 @@ const CheckoutItem = ({cartItem, removeItem, addItem, decreaseItem}) => {
     );
 };
 
+
 const mapDispatchToProps = dispatch =>({
     removeItem: item => dispatch(removeItem(item)),
     addItem: item => dispatch(addItem(item)),
-    decreaseItem: item => dispatch(decreaseItem(item))
+    decreaseItem: item => dispatch(decreaseItem(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CheckoutItem);
