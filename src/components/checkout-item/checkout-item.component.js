@@ -20,7 +20,7 @@ const CheckoutItem = ({cartItem, removeItem, addItem, decreaseItem}) => {
 
         <span className='quantity'>
             <div onClick={()=> decreaseItem(cartItem)} className='arrow'>&#10094;</div>
-                <input className='value' type="quantity" onChange={()=> quantity}/>
+                <span className='value'>{quantity}</span>
             <div onClick={()=> addItem(cartItem)} className='arrow'>&#10095;</div>
         </span>
 
