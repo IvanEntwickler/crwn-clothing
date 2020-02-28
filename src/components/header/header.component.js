@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 
 import CurrentUserContext from '../../context/currentUserContext/currentUserContext.context';
-import CartContext from '../../context/cartContext/cart.context';
+import {CartContext} from '../../Providers/cart/cart.provider';
 
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
@@ -14,10 +14,8 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = () =>{
 
-const[hidden, setHidden] = useState(true);
-const toggleHidden = () => setHidden(!hidden);
-
 const currentUser = useContext(CurrentUserContext);
+const { hidden } = useContext(CartContext);
 return(
         <div className='header'>
             <Link className='logo-container' to="/" >
@@ -41,9 +39,8 @@ return(
                     SIGN IN
                     </Link>
                 )}
-                <CartContext.Provider value={{hidden, toggleHidden}}>
+                
                     <CartIcon/>
-                </CartContext.Provider>
             </div>
             {hidden ? 
             null : <CartDropdown/> }
